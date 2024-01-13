@@ -13,38 +13,34 @@
 <body>
     <header class="bg-light">
         <!-- NavBar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Number Converter</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" href="#"></a>                        
-                    </div>
-                </div>
-            </div>
-        </nav>
+        <div id="menu"></div>
     </header>
 
     <main class="container mt-5">
         <!-- Decimal / Hex Converter -->
+        <a id="convertHex"></a>
         <div class="row m-3 convert-hex">
             <h2 class="display-2 text-center text-light bg-dark">Decimal / Hex Converter</h2>
             <div class="row input-group mb-3">
                 <label for="numberInput" class="form-label">Decimal</label>
                 <input type="number" class="num_input form-control" placeholder="Enter a number">
             </div>
+            <div id="instructions" class="instruction form-text">
+                Instructions: Enter decimal number value to convert to hex string.
+            </div>
             <div class="js-string-output"></div>
             <div class="row input-group mb-3">
                 <label for="stringInput" class="form-label">Hex</label>
                 <input type="text" class="str_input form-control" placeholder='Enter a "0x" number'>
             </div>
+            <div id="instructions" class="instruction form-text">
+                Instructions: Enter hex string value to convert to decimal.
+            </div>
             <div class="js-number-output"></div>
         </div>
 
         <!-- Ethereum from wei Converter -->
+        <a id="convertWei"></a>
         <div class="row m-3 convert-wei">
             <h2 class="display-2 text-center text-light bg-dark">Ethereum</h2>
             <h3 class="display-3 text-center text-light bg-dark">Convert from Wei</h3>
@@ -58,6 +54,10 @@
                         <label for="decInput" class="form-label">Decimals</label>
                         <input type="number" class="dec_input form-control" placeholder="Enter number of decimals">
                     </div>
+                    <div id="instructions-convert-wei" class="instruction form-text">
+                        Instructions: Enter number value in wei and number of decimals value to convert. <br>
+                        Press button to convert the value.
+                    </div>
                     <div class="row input-group mb-3">
                         <button type="submit" class="convert_wei_btn btn btn-success ">Convert</button>
                     </div>
@@ -66,13 +66,43 @@
             
             <div class="js-wei-output"></div>
         </div>
+
+        <!-- Percent Change -->
+        <a id="percentChange"></a>
+        <div class="row m-3 percent-change">
+            <h2 class="display-2 text-center text-light bg-dark">Percent Change</h2>
+            <form action="#" method="post">
+                <div class="col">
+
+                </div>
+                <div class="row input-group mb-3">
+                    <label for="startValue" class="form-label">Start Value</label>
+                    <input type="number" class="start_input form-control" id="startingNumber" aria-describedby="instructions" placeholder="Enter start value" value="">
+                </div>
+                <div class="row input-group mb-3">
+                    <label for="endValue" class="form-label">End Value</label>
+                    <input type="number" class="end_input form-control" id="endingNumber" aria-describedby="instructions" placeholder="Enter end value" value="">
+                </div>
+                <div id="instructions-percent-change" class="instruction form-text">
+                    Instructions: Enter starting value and ending value. <br>
+                    Press button to calculate the percentage change.
+                </div>
+                <div class="row input-group mb-3">
+                    <button type="submit" class="calculate_percentage_btn btn btn-success">Calculate</button>
+                </div>
+            </form>
+            <div class="js-percent-output"></div>
+        </div>
+        
     </main>
 
     <footer class="text-center bg-light">
-        <p>Sean Babb 2024</p>
+        <p> Copyright (c) 2024 SEAN BABB</p>
     </footer>
     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="index.js"></script>
+    <script src="header.js"></script>
 </body>
 </html>

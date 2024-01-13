@@ -6,6 +6,10 @@ const weiInput = document.querySelector(".wei_input")
 const decInput = document.querySelector(".dec_input")
 const weiOutput = document.querySelector(".js-wei-output")
 const convertWeiButton = document.querySelector(".convert_wei_btn")
+const startInput = document.querySelector(".start_input")
+const endInput = document.querySelector(".end_input")
+const percentageOutput = document.querySelector(".js-percent-output")
+const calculatePercentageButton = document.querySelector(".calculate_percentage_btn")
 
 
 const decimalFormatter = new Intl.NumberFormat("en-us", {
@@ -34,14 +38,39 @@ function decimalToHexString(decimal) {
      return hex
 }
 
-function formSubmitted(e) {
-    e.preventDefault()
-    let wv = weiInput.value
-    let dv = decInput.value
-    tokenValueTxt(wv,dv)
+function calculatePercentageChange(startValue, endValue) {
+    let res = ((endValue - startValue) / startValue ) * 100
+    return res
 }
 
-convertWeiButton.addEventListener("click", formSubmitted)
+function percentChangeValueTxt(start_value, end_value) {
+    percentageOutput.textContent = `${calculatePercentageChange(start_value, end_value)}%`
+}
+
+function percentChangeFormSubmitted(e) {
+    e.preventDefault()
+    let start_value = startInput.value
+    let end_value = endInput.value
+    percentChangeValueTxt(start_value, end_value)
+}
+
+function convertWeiFormSubmitted(e) {
+    e.preventDefault()
+    let wei_value = weiInput.value
+    let decimal_value = decInput.value
+    tokenValueTxt(wei_value, decimal_value)
+}
+
+calculatePercentageButton.addEventListener("click", percentChangeFormSubmitted)
+convertWeiButton.addEventListener("click", convertWeiFormSubmitted)
+startInput.addEventListener("change", () => {
+    const startValue = startInput.value
+    return startValue
+})
+endInput.addEventListener("change", () => {
+    const endValue = endInput.value
+    return endValue
+})
 weiInput.addEventListener("change", () => {
     const weiValue = weiInput.value
     return weiValue
